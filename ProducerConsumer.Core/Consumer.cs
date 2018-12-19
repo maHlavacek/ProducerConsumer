@@ -5,7 +5,13 @@ namespace ProducerConsumer.Core
 {
     public class Consumer
     {
-        //hallo 
-        ljjjlkljlkjkljl;
+        #region Fields
+
+        private Task _currentTask;
+        private int _maxDuration;
+        private int _minDuration;
+        private int _create
+
+        #endregion
     }
 }
