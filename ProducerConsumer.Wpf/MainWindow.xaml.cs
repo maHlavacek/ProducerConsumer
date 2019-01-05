@@ -34,10 +34,10 @@ namespace ProducerConsumer.Wpf
             _queue=new Queue<Task>();
             int min = Convert.ToInt32(TextBoxProducerMinimum.Text);
             int max = Convert.ToInt32(TextBoxProducerMaximum.Text);
-            //_producer = new Producer(min, max, LogTask, _queue);
+            _producer = new Producer(min, max, LogTask, _queue);
             min = Convert.ToInt32(TextBoxConsumerMinimum.Text);
             max = Convert.ToInt32(TextBoxConsumerMaximum.Text);
-            //_consumer = new Consumer(min, max, _queue);
+            _consumer = new Consumer(min, max, _queue);
             CheckBoxIsRunning.IsChecked = true;
         }
 

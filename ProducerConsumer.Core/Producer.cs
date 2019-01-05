@@ -22,13 +22,18 @@ namespace ProducerConsumer.Core
             _maxDuration = max;
             _logTask = LogTask;
             _tasks = _queue;
+            FastClock.Instance.OneMinuteIsOver += Instance_OneMinuteIsOver;
+            Random random = new Random();
+            _random = random.Next(min, max);
+            _minutesToNextProduction = _random;
+            _taskNumber++;
         }
         #endregion
 
         #region Methods
         private void Instance_OneMinuteIsOver(object sender, DateTime time)
         {
-
+            
         }
         #endregion
     }

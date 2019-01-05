@@ -17,7 +17,7 @@ namespace ProducerConsumer.Core
         #region Constructor
         public Task()
         {
-            BeginConsuptionTime = DateTime.Now;
+
         }
         #endregion
 

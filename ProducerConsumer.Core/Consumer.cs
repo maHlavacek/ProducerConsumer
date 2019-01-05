@@ -20,6 +20,7 @@ namespace ProducerConsumer.Core
             _minDuration = min;
             _maxDuration = max;
             _tasks = _queue;
+            FastClock.Instance.OneMinuteIsOver += Instance_OneMinuteIsOver;
         }
         #endregion
 
