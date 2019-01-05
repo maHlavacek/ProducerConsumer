@@ -13,7 +13,7 @@
   <Class Name="ProducerConsumer.Core.Consumer">
     <Position X="9" Y="0.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAACAAAAAAAAAAQBAAAAAAAAgAAAAAGAAAAE=</HashCode>
+      <HashCode>AAgAAAAAAACAAAAAAAAAAQAAAAAAAAAgAAAAAGAAAAE=</HashCode>
       <FileName>Consumer.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -23,7 +23,7 @@
   <Class Name="ProducerConsumer.Core.Task">
     <Position X="6" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAEAAAAAAAAAAAgAAAAAEAAAAAAgAAQAAg=</HashCode>
+      <HashCode>AAEAAAAACCAAAAAAAAAABAAgAAAAAAAAAAAAgAAAAAg=</HashCode>
       <FileName>Task.cs</FileName>
     </TypeIdentifier>
   </Class>
