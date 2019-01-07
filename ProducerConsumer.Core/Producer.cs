@@ -8,15 +8,14 @@ namespace ProducerConsumer.Core
     public class Producer
     {
         #region Fields
-        private Task _logTask;
+        private EventHandler<string> _logTask;
+        private Task _task;
         private int _minDuration;
         private int _maxDuration;
         private int _minutesToNextProduction;
         private Random _random;
         private int _taskNumber;
         private Queue<Task> _tasks;
-
-        public event EventHandler<string> LogTask;
 
         #endregion
 
@@ -30,7 +29,7 @@ namespace ProducerConsumer.Core
             _minutesToNextProduction = 0;
             FastClock.Instance.OneMinuteIsOver += Instance_OneMinuteIsOver;
             _random = new Random();
-            LogTask += logTask;
+            _logTask = logTask;
         }
         #endregion
 
@@ -46,17 +45,11 @@ namespace ProducerConsumer.Core
                 _minutesToNextProduction--;
                 if(_minutesToNextProduction == 0)
                 {
-                    _logTask = new Task();
-                    _logTask.LogTask += Output;
-                    _logTask.Start(_taskNumber, time, _tasks);
+                    _task = new Task(_logTask);
+                    _task.Start(_taskNumber, time, _tasks);
                     _taskNumber++;
                 }
             }
-        }
-
-        private void Output(object sender, string e)
-        {
-            LogTask?.Invoke(this, $"Queuelength: {_tasks.Count}, {e}");
         }
         #endregion
     }

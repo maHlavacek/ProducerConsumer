@@ -9,6 +9,7 @@ namespace ProducerConsumer.Core
         public DateTime BeginConsuptionTime { get; set; }
         public DateTime CreationTime { get; private set; }
         public int TaskNumber { get; private set; }
+        private static int _count;
         #endregion
 
         #region EventHandler
@@ -16,8 +17,10 @@ namespace ProducerConsumer.Core
         #endregion
 
         #region Constructor
-        public Task()
+        public Task(EventHandler<string> logTask)
         {
+            LogTask += logTask;
+
         }
         #endregion
 
@@ -25,17 +28,19 @@ namespace ProducerConsumer.Core
         public void Start(int taskNumber, DateTime time, Queue<Task> tasks)
         {
             TaskNumber = taskNumber;
+            _count++;
             CreationTime = time;
             tasks.Enqueue(this);
-            LogTask?.Invoke(this, $"Task {TaskNumber} erzeugt!");
+            LogTask?.Invoke(this, $"Quelength {_count}, Task {TaskNumber} erzeugt!");
         }
         public void Finish(int lenght, DateTime time)
         {
-            LogTask?.Invoke(this, $"Task {TaskNumber} wurde um {CreationTime.ToShortTimeString()} erzeugt und von {BeginConsuptionTime.ToShortTimeString()} - {time.ToShortTimeString()} bearbeitet!");
+            LogTask?.Invoke(this, $"Quelength {_count}, Task {TaskNumber} wurde um {CreationTime.ToShortTimeString()} erzeugt und von {BeginConsuptionTime.ToShortTimeString()} - {time.ToShortTimeString()} bearbeitet!");
         }
         public void BeginConsuption(int length)
         {
-            LogTask?.Invoke(this, $"Task {TaskNumber} wird bearbeitet!");
+            _count--;
+            LogTask?.Invoke(this, $"Quelength {_count}, Task {TaskNumber} wird bearbeitet!");
         }
         #endregion
     }
