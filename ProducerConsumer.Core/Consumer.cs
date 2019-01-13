@@ -38,7 +38,6 @@ namespace ProducerConsumer.Core
         {
             if(!IsBusy && _tasks.Count > 0)
             {
-                _currentTask = _tasks.Peek();
                 _tasks.Dequeue();
                 IsBusy = true;
                 _minutesToFinishConsumption = _random.Next(_minDuration, _maxDuration + 1);
